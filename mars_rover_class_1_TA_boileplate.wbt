@@ -1,0 +1,199 @@
+#VRML_SIM R2023b utf8
+
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/appearances/protos/Copper.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/appearances/protos/HammeredCopper.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/backgrounds/protos/TexturedBackground.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/backgrounds/protos/TexturedBackgroundLight.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/floors/protos/UnevenTerrain.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/appearances/protos/SolarCell.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/trees/protos/Forest.proto"
+
+WorldInfo {
+  gravity 3.721
+}
+Viewpoint {
+  orientation -0.1495277991153579 0.24874451187153498 0.9569574729869186 1.1217483412138542
+  position -1.0156274798541771 7.8269959136634055 4.418721708198133
+}
+TexturedBackground {
+  texture "mars"
+}
+TexturedBackgroundLight {
+  luminosity 2
+}
+Forest {
+}
+UnevenTerrain {
+}
+Robot {
+  translation 0.009807874197139767 9.755550744774121 3.6073605199708387
+  rotation -0.8607193182223949 0.2854803370021911 -0.4215011653885323 0.055988837400230716
+  children [
+    DEF right_wheel1 Solid {
+      translation -0.18 0.24 0
+      rotation 1 0 0 1.5708
+      children [
+        SliderJoint {
+          jointParameters JointParameters {
+          }
+          device [
+            LinearMotor {
+            }
+          ]
+          endPoint Solid {
+            boundingObject DEF cylinder1 Cylinder {
+              height 0.09
+              radius 0.02
+            }
+          }
+        }
+      ]
+    }
+    DEF Left_wheel1 Solid {
+      translation -0.18 -0.24 0
+      rotation 1 0 0 1.5708
+      children [
+        SliderJoint {
+          jointParameters JointParameters {
+          }
+          device [
+            LinearMotor {
+            }
+          ]
+          endPoint Solid {
+            boundingObject DEF cylinder1 Cylinder {
+              height 0.09
+              radius 0.02
+            }
+          }
+        }
+      ]
+      name "solid(2)"
+    }
+    DEF right_wheel2 Solid {
+      translation 0.18 0.24 0
+      rotation 1 0 0 1.5708
+      children [
+        SliderJoint {
+          jointParameters JointParameters {
+          }
+          device [
+            LinearMotor {
+            }
+          ]
+          endPoint Solid {
+            boundingObject DEF cylinder1 Cylinder {
+              height 0.09
+              radius 0.02
+            }
+          }
+        }
+      ]
+      name "solid(1)"
+    }
+    DEF Left_wheel2 Solid {
+      translation 0.18 -0.24 0
+      rotation 1 0 0 1.5708
+      children [
+        SliderJoint {
+          jointParameters JointParameters {
+          }
+          device [
+            LinearMotor {
+            }
+          ]
+          endPoint Solid {
+            boundingObject DEF cylinder1 Cylinder {
+              height 0.09
+              radius 0.02
+            }
+          }
+        }
+      ]
+      name "solid(3)"
+    }
+    DEF body Shape {
+      appearance HammeredCopper {
+      }
+      geometry Box {
+        size 0.7 0.5 0.2
+      }
+    }
+    DEF solar_panel Solid {
+      translation 0 0 0.19
+      children [
+        DEF left_wheel1 Shape {
+          appearance SolarCell {
+          }
+          geometry Box {
+            size 0.8 0.5 0.01
+          }
+        }
+        Solid {
+          translation 0.3 -0.19 -0.05
+          children [
+            Shape {
+              appearance Copper {
+              }
+              geometry Cylinder {
+                height 0.1
+                radius 0.02
+              }
+            }
+          ]
+          name "solar_panel_support1"
+        }
+        Solid {
+          translation 0.3 0.19 -0.05
+          children [
+            Shape {
+              appearance Copper {
+              }
+              geometry Cylinder {
+                height 0.1
+                radius 0.02
+              }
+            }
+          ]
+          name "solar_panel_support2"
+        }
+        Solid {
+          translation -0.3 0.19 -0.05
+          children [
+            Shape {
+              appearance Copper {
+              }
+              geometry Cylinder {
+                height 0.1
+                radius 0.02
+              }
+            }
+          ]
+          name "solar_panel_support3"
+        }
+        Solid {
+          translation -0.3 -0.19 -0.05
+          children [
+            Shape {
+              appearance Copper {
+              }
+              geometry Cylinder {
+                height 0.1
+                radius 0.02
+              }
+            }
+          ]
+          name "solar_panel_support4"
+        }
+      ]
+      name "left "
+    }
+  ]
+  boundingObject USE body
+  physics DEF phy Physics {
+    mass 1
+  }
+  controller "sd"
+  linearVelocity 1.442008708070207e-07 4.385163339268863e-07 -2.271508613205242e-08
+  angularVelocity -1.5320042157483636e-08 -1.3338579942127334e-09 -7.31100756716816e-08
+}
